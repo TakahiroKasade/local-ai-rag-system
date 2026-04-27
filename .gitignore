@@ -1,0 +1,23 @@
+# Python 暫存檔
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虛擬環境
+venv/
+env/
+.env
+
+# 向量資料庫 (非常重要！不要上傳本地資料庫)
+chroma_db/
+
+# 編輯器設定
+.vscode/
+.idea/
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+
+# 數據 (如果您希望 GitHub 上是空的，可以排除 my_data)
+# my_data/
