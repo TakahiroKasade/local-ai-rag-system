@@ -37,17 +37,27 @@ with st.sidebar:
     st.header("📚 知識庫內容")
     if os.path.exists("./my_data"):
         data_files = os.listdir("./my_data")
-        # 支援顯示所有格式
+        # 支援顯示與下載
         for file in data_files:
+            file_path = os.path.join("./my_data", file)
             ext = os.path.splitext(file)[1].lower()
-            if ext == ".txt":
-                st.write(f"📄 {file}")
-            elif ext == ".pdf":
-                st.write(f"📕 {file}")
-            elif ext == ".md":
-                st.write(f"📝 {file}")
-            elif ext == ".docx":
-                st.write(f"📘 {file}")
+            icon = "📄"
+            if ext == ".pdf": icon = "📕"
+            elif ext == ".md": icon = "📝"
+            elif ext == ".docx": icon = "📘"
+            
+            col1, col2 = st.sidebar.columns([4, 1])
+            col1.write(f"{icon} {file}")
+            
+            # 讀取檔案提供下載
+            with open(file_path, "rb") as f:
+                col2.download_button(
+                    label="💾",
+                    data=f,
+                    file_name=file,
+                    mime="application/octet-stream",
+                    key=f"dl_{file}"
+                )
     
     if st.button("🔄 刷新知識庫清單"):
         st.rerun()

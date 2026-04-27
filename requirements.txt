@@ -1,0 +1,7 @@
+streamlit
+chromadb
+ollama
+pypdf
+pymupdf
+python-docx
+google-genai
